@@ -42,6 +42,9 @@ window.App = (() => {
       : "Вход не выполнен";
   }
 
+  // ===============================
+  // ГЛАВНАЯ СТРАНИЦА — КАТАЛОГ
+  // ===============================
   function renderWebinars() {
     const grid = document.getElementById("webinarGrid");
     if (!grid) return;
@@ -60,13 +63,17 @@ window.App = (() => {
       return `
         <div class="col-12 col-md-6 col-lg-4">
           <div class="card h-100">
-            <div class="card-body">
+            <!-- ВАЖНО: flex-column -->
+            <div class="card-body d-flex flex-column">
               <div class="d-flex justify-content-between align-items-start">
                 <h2 class="h6 mb-2">${w.title}</h2>
                 <span class="badge text-bg-light border">${w.level}</span>
               </div>
+
               <p class="text-secondary mb-3">Дата: <strong>${w.date}</strong></p>
-              <button class="btn ${btnClass} w-100"
+
+              <!-- ВАЖНО: mt-auto -->
+              <button class="btn ${btnClass} w-100 mt-auto"
                       data-webinar-id="${w.id}"
                       ${disabled ? "disabled" : ""}>
                 ${btnText}
@@ -98,6 +105,9 @@ window.App = (() => {
     });
   }
 
+  // ===============================
+  // МОИ ВЕБИНАРЫ (ПРОФИЛЬ)
+  // ===============================
   function renderMyWebinars() {
     const listEl = document.getElementById("myWebinarsList");
     if (!listEl) return;
@@ -132,6 +142,9 @@ window.App = (() => {
     renderWebinars();
   }
 
+  // ===============================
+  // ПРОФИЛЬ
+  // ===============================
   function initProfilePage() {
     const form = document.getElementById("profileForm");
     const alertBox = document.getElementById("alertBox");
@@ -162,17 +175,16 @@ window.App = (() => {
       }
     }
 
-    // Подгружаем сохранённый профиль
+    // загрузка профиля
     const saved = getProfile();
     if (saved.name) document.getElementById("name").value = saved.name;
     if (saved.email) document.getElementById("email").value = saved.email;
     if (saved.role) document.getElementById("role").value = saved.role;
 
-    // Войти / зарегистрироваться (симуляция)
     loginBtn?.addEventListener("click", () => {
       const emailVal = document.getElementById("email").value.trim();
       if (!emailVal) {
-        showAlert("warning", "Введите email в форме профиля, затем нажмите «Войти / зарегистрироваться».");
+        showAlert("warning", "Введите email, затем нажмите «Войти / зарегистрироваться».");
         return;
       }
       setAuth({ isLoggedIn: true });
@@ -180,7 +192,6 @@ window.App = (() => {
       refreshAuthUI();
     });
 
-    // Выйти + сброс записей (demo)
     logoutBtn?.addEventListener("click", () => {
       setAuth({ isLoggedIn: false });
       clearJoined();
@@ -189,14 +200,12 @@ window.App = (() => {
       renderMyWebinars();
     });
 
-    // Очистить список записей
     clearJoinedBtn?.addEventListener("click", () => {
       clearJoined();
       showAlert("secondary", "Список «Мои вебинары» очищен.");
       renderMyWebinars();
     });
 
-    // Сохранить профиль
     form?.addEventListener("submit", (e) => {
       e.preventDefault();
 
