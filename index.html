@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Вебинары — ЛР-5</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/style.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom">
+  <div class="container">
+    <a class="navbar-brand fw-semibold" href="./">Вебинары</a>
+
+    <div class="ms-auto d-flex align-items-center gap-2">
+      <span id="navStatus" class="small text-secondary d-none d-md-inline"></span>
+      <a class="btn btn-outline-primary" href="profile.html">Профиль</a>
+    </div>
+  </div>
+</nav>
+
+<main class="container py-4">
+  <div class="d-flex align-items-start justify-content-between gap-3 flex-wrap">
+    <div>
+      <h1 class="h3 mb-2">Каталог вебинаров</h1>
+      <p class="text-secondary mb-0">
+        Запись на вебинар доступна только после входа.
+      </p>
+    </div>
+
+    <a class="btn btn-outline-primary" href="profile.html#mywebinars">Мои вебинары</a>
+  </div>
+
+  <hr class="my-4"/>
+
+  <div class="row g-3" id="webinarGrid"></div>
+</main>
+
+<!-- Уведомления (Toast) -->
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div id="joinToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <strong class="me-auto">Вебинары</strong>
+      <small>только что</small>
+      <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+    </div>
+    <div class="toast-body">Вы успешно записались на вебинар.</div>
+  </div>
+
+  <div id="authToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <strong class="me-auto">Вебинары</strong>
+      <small>внимание</small>
+      <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+    </div>
+    <div class="toast-body">Сначала войдите или зарегистрируйтесь, чтобы записаться на вебинар.</div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/app.js"></script>
+<script>
+  window.App.initIndexPage();
+</script>
+</body>
+</html>

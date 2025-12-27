@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Профиль — ЛР-5</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/style.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom">
+  <div class="container">
+    <a class="navbar-brand fw-semibold" href="./">Вебинары</a>
+    <div class="ms-auto">
+      <a class="btn btn-outline-primary" href="./">Назад к каталогу</a>
+    </div>
+  </div>
+</nav>
+
+<main class="container py-4" style="max-width: 920px;">
+  <h1 class="h3 mb-3">Профиль</h1>
+
+  <div id="alertBox" class="alert d-none" role="alert"></div>
+
+  <!-- ВХОД -->
+  <div class="card mb-3">
+    <div class="card-body">
+      <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
+        <div>
+          <div class="fw-semibold">Аккаунт</div>
+          <div id="authStatus" class="text-secondary small">Статус: вход не выполнен</div>
+          <div class="text-secondary small">Чтобы “войти”, введите email в форме ниже и нажмите «Войти / зарегистрироваться».</div>
+        </div>
+        <div class="d-flex gap-2">
+          <button id="loginBtn" class="btn btn-primary" type="button">Войти / зарегистрироваться</button>
+          <button id="logoutBtn" class="btn btn-outline-primary d-none" type="button">Выйти</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- МОИ ВЕБИНАРЫ -->
+  <div class="card mb-3" id="mywebinars">
+    <div class="card-body">
+      <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
+        <div>
+          <h2 class="h6 mb-1">Мои вебинары</h2>
+          <div class="text-secondary small">Список вебинаров, на которые вы записаны.</div>
+        </div>
+        <button id="clearJoinedBtn" class="btn btn-outline-secondary" type="button">Очистить список</button>
+      </div>
+
+      <div class="mt-3" id="myWebinarsList"></div>
+    </div>
+  </div>
+
+  <!-- ДАННЫЕ ПРОФИЛЯ -->
+  <div class="card">
+    <div class="card-body">
+      <h2 class="h6 mb-3">Данные профиля</h2>
+
+      <form id="profileForm" class="needs-validation" novalidate>
+        <div class="mb-3">
+          <label class="form-label">Имя</label>
+          <input id="name" class="form-control" required minlength="2" placeholder="Например, Карина" />
+          <div class="invalid-feedback">Введите имя (минимум 2 символа).</div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Email</label>
+          <input id="email" class="form-control" type="email" required placeholder="name@example.com" />
+          <div class="invalid-feedback">Введите корректный email.</div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Роль</label>
+          <select id="role" class="form-select" required>
+            <option value="">Выберите…</option>
+            <option>Юрист</option>
+            <option>Паралегал</option>
+            <option>Студент</option>
+          </select>
+          <div class="invalid-feedback">Выберите роль.</div>
+        </div>
+
+        <button class="btn btn-primary" type="submit">Сохранить профиль</button>
+      </form>
+    </div>
+  </div>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/app.js"></script>
+<script>
+  window.App.initProfilePage();
+</script>
+</body>
+</html>

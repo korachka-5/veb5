@@ -1,0 +1,32 @@
+:root{
+  --brand: #4a0f1f;
+  --brand-dark: #340a15;
+}
+
+body { min-height: 100vh; }
+.card { border-radius: 14px; }
+.btn { border-radius: 12px; }
+
+.btn-primary{
+  background-color: var(--brand) !important;
+  border-color: var(--brand) !important;
+}
+.btn-primary:hover,
+.btn-primary:focus{
+  background-color: var(--brand-dark) !important;
+  border-color: var(--brand-dark) !important;
+}
+
+.btn-outline-primary{
+  color: var(--brand) !important;
+  border-color: var(--brand) !important;
+}
+.btn-outline-primary:hover,
+.btn-outline-primary:focus{
+  background-color: var(--brand) !important;
+  border-color: var(--brand) !important;
+  color: #fff !important;
+}
+
+a { color: var(--brand); }
+a:hover { color: var(--brand-dark); }
